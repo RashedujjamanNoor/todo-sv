@@ -42,4 +42,15 @@ router.put("/update/:id", async (req, res) => {
   }
 });
 
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    await User.findByIdAndDelete(id).then(
+      res.status(200).json({ message: "Deleted Successfully" })
+    );
+  } catch (error) {
+    res.status(400).json({ message: "Server Error" });
+  }
+});
+
 module.exports = router;
