@@ -10,11 +10,9 @@ router.post("/create", async (req, res) => {
     res.json({ message: "User already exist" });
   } else {
     try {
-      await user
-        .save()
-        .then(() =>
-          res.status(200).json({ message: "User created successfully" })
-        );
+      await user.save();
+
+      res.status(200).json({ message: "User created successfully" });
     } catch (error) {
       res.status(400).json({ message: "Server Error" });
     }
